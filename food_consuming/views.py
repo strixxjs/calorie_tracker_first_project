@@ -17,11 +17,12 @@ class IndexView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         food_consumed = request.POST['food_consumed']
-        consume = Food.objects.get(name=food_consumed)
+        food = Food.objects.get(name=food_consumed)
         user = request.user
-        consume = Consume(user=user, food_consumed=consume)
+
+        consume = Consume(user=user, food=food)
         consume.save()
-        return redirect('/')
+        return redirect('index')
 
 
 class DeleteView(TemplateView):

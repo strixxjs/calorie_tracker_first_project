@@ -7,7 +7,7 @@ class Food(models.Model):
         return self.name
     name = models.CharField(max_length=100)
     carbs = models.FloatField()
-    protein = models.FloatField()
+    proteins = models.FloatField()
     fats = models.FloatField()
     calories = models.IntegerField()
 

@@ -17,9 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
+from rest_framework.authtoken.views import obtain_auth_token
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('food/', include('food_consuming.urls')),
+    path('api/food_consuming/', include('food_consuming.api.urls')),
     path('', lambda request: redirect('food/', permanent=False)),
+    path('api/token/', obtain_auth_token),
 ]
